@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Document</title>
+    <style>
+        .bg-black{
+            background-color: aliceblue;
+        }
+    </style>
+</head>
+<body class="bg-black" style="background-color: #212121; color:white">
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+</body>
+<script>
+   function addLanguage(lang){
+    const li = document.createElement('li')
+    li.innerHTML = lang
+    document.querySelector(".language").appendChild(li)
+   }
+
+   addLanguage('python');
+   addLanguage('typescript');
+
+   function addLanguageOptimized(lang){
+    const li = document.createElement('li')
+    li.appendChild(document.createTextNode(lang))
+    document.querySelector(".language").appendChild(li)
+   }
+
+   addLanguageOptimized('golang')
+
+   
+   // Edit - replace python by mojo
+   const secondLang = document.querySelector("li:nth-child(2)")
+   // Approach-1
+   //secondLang.innerHTML = "mojo"
+   // Approach-2 optimized as above
+   const newLi = document.createElement('li')
+   newLi.textContent = 'mojo'
+   secondLang.replaceWith(newLi)
+</script>
+</html>
