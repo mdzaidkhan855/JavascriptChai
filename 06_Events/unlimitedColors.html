@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Unlimited Colors</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    const randonColor = function(){
+        const hex = "0123456789ABCDEF"
+        let color = '#'
+        const hexArr = [...hex]
+        for(let i=0;i<6; i++){
+            color += hex[Math.floor(Math.random()*16)] 
+        }
+        console.log(color);
+        return color
+    }
+    //const colors = ['red','blue','green','black','white']
+    const changeColor = (str) => {
+        let colorIndex = parseInt((Math.random()*10))/2
+        document.querySelector('body').style.backgroundColor = randonColor()
+    }
+    //let intervalId = setInterval(changeColor, 1000,"hi");
+    let intervalId;    
+    document.querySelector("#start").addEventListener('click',()=>{
+        if(!intervalId)
+            intervalId = setInterval(changeColor, 1000,"hi");
+    })
+
+    document.querySelector("#stop").addEventListener('click',()=>{
+        clearInterval(intervalId)
+        intervalId = null
+    })
+</script>
+
+</html>
